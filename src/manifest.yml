@@ -1,0 +1,7 @@
+applications:
+- name: sample-ng-app1
+  memory: 64M
+  disk: 128M
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
+  random-route: true
