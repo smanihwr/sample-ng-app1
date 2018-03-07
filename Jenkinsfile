@@ -20,8 +20,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'find . -name ng'
-                sh 'npm link @angular/cli'
-                sh 'ng build --prod --aot --output-hashing none'
+                sh './node_modules/@angular/cli/bin/ng build --prod --aot --output-hashing none'
                 sh 'pwd'
                 sh 'cd dist'
                 sh 'ls -ltr'
