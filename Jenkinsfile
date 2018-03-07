@@ -2,6 +2,11 @@ pipeline {
     agent {
         docker { image 'node:7-alpine' }
     }
+
+    environment {
+        npm_config_cache= 'npm-cache'
+    }
+
     stages {
 
         stage('Setup ng environment') {
