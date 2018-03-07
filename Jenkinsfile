@@ -18,6 +18,8 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'pwd'
+                sh 'find . -name ng'
                 sh 'ng build --prod --aot --output-hashing none'
                 sh 'pwd'
                 sh 'cd dist'
