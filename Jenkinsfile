@@ -40,10 +40,22 @@ pipeline {
             }
         }
 
-        stage('Deploy to Cloud Foundry') {
-            withCredentials([usernamePassword(credentialsId: 'PCF_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u USERNAME -p PASSWORD -o my-dev-org'
-                sh 'cf push -p ./dist'
+        // stage('Deploy to Cloud Foundry') {
+        //     withCredentials([usernamePassword(credentialsId: 'PCF_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        //         sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u USERNAME -p PASSWORD -o my-dev-org'
+        //         sh 'cf push -p ./dist'
+        //     }
+        // }
+
+        stage ("Global Credentials Overwritten at the user scope") {
+            // credentials declared globally and overwritten by a user scoped credentials
+            withCredentials([
+                usernamePassword(
+                    credentialsId: 'PCF_USER',
+                    passwordVariable: 'PASSWORD_VAR',
+                    usernameVariable: 'USERNAME_VAR')]) {
+               sh "echo $USERNAME_VAR"
+               sh "echo $PASSWORD_VAR"
             }
         }
     }
