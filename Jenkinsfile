@@ -12,10 +12,10 @@ pipeline {
 
         stage('Setup Node and Ng') {
             steps {
+                sh 'apt-get install sudo -y'
                 sh 'apt-get update'
 
                 sh 'apt-get install wget -y'
-                sh 'apt-get install sudo -y'
                 sh 'apt-get install apt-transport-https -y'
 
                 sh 'apt-get install nodejs -y'
