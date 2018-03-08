@@ -68,7 +68,7 @@ pipeline {
                 sh 'cd dist'
                 sh 'pwd'
                 sh 'ls -ltr'
-                sh 'cf push'
+                sh 'cf push -f ./dist/manifest.yml'
                 sh 'cd ..'
             }
         }
