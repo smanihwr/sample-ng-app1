@@ -1,7 +1,7 @@
 pipeline {
 
     agent {
-        docker { image 'ubuntu' }.withRun('-u root')
+        docker { image 'ubuntu' }
     }
 
     environment {
@@ -12,6 +12,7 @@ pipeline {
 
         stage('Setup Node and Ng') {
             steps {
+                sh 'su root'
                 sh 'apt-get install sudo -y'
                 sh 'apt-get update'
 
