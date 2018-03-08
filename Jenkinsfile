@@ -20,6 +20,7 @@ pipeline {
                 sh 'apt-get install sudo -y'
                 sh 'apt-get install wget -y'
                 sh 'apt-get install apt-transport-https -y'
+                sh 'apt-get install curl'
 
                 sh 'curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -'
                 sh 'apt-get install -y nodejs'
