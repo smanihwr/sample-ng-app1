@@ -64,7 +64,9 @@ pipeline {
         stage('Deploy to Cloud Foundry') {
             steps {
                 sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u nabise@wmail.club -p Pa55word$ -o my-dev1-org'
-                sh 'cf push -p ./dist'
+                sh 'cd ./dist'
+                sh 'cf push'
+                sh 'cd ..'
             }
         }
 
