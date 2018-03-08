@@ -1,7 +1,7 @@
 pipeline {
 
     agent {
-        docker { image 'node:7-alpine' }
+        docker { image 'ubuntu' }
     }
 
     environment {
@@ -12,14 +12,18 @@ pipeline {
 
         stage('Setup ng and cf-cli') {
             steps {
-                sh 'npm install'
+                sh 'apt-get update'
+                sh 'apt-get install sudo -y'
+                sh 'apt-get install nodejs -y'
 
                 // ...first add the Cloud Foundry Foundation public key and package repository to your system
-                // sh 'wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -'
-                // sh 'echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list'
+                sh 'wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -'
+                sh 'echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list'
                 // ...then, update your local package index, then finally install the cf CLI
-                sh 'apk update'
-                sh 'apk install cf-cli'
+                sh 'apt-get update'
+                sh 'apt-get install cf-cli'
+
+                sh 'npm install'
             }
         }
 
