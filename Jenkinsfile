@@ -24,6 +24,7 @@ pipeline {
                 sh 'apt-get install nodejs -y'
                 sh 'apt-get install npm -y'
                 sh 'npm install -y'
+                sh 'ln -s /usr/bin/nodejs /usr/bin/node'
             }
         }
 
