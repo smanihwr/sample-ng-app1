@@ -42,10 +42,8 @@ pipeline {
 
         stage('Deploy to Cloud Foundry') {
             withCredentials([usernamePassword(credentialsId: 'PCF_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                steps {
-                    sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u USERNAME -p PASSWORD -o my-dev-org'
-                    sh 'cf push -p ./dist'
-                }
+                sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u USERNAME -p PASSWORD -o my-dev-org'
+                sh 'cf push -p ./dist'
             }
         }
     }
