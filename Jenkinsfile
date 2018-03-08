@@ -56,13 +56,9 @@ pipeline {
         //         sh 'cf push -p ./dist'
         //     }
         // }
-
-        stage ("Global Credentials Overwritten at the user scope") {
-            // credentials declared globally and overwritten by a user scoped credentials
-            withMyCredentials {
-               sh "echo $USERNAME_VAR"
-               sh "echo $PASSWORD_VAR"
-            }
+        withMyCredentials {
+           sh "echo $USERNAME_VAR"
+           sh "echo $PASSWORD_VAR"
         }
     }
 }
