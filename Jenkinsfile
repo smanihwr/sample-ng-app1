@@ -1,13 +1,3 @@
-def withMyCredentials(body) {
-  withCredentials([
-    [ $class: 'StringBinding',
-      credentialsId: 'PCF-DEV',
-      passwordVariable: 'PASSWORD_VAR',
-      usernameVariable: 'USERNAME_VAR']
-  ],
- body)
-}
-
 pipeline {
 
     agent {
@@ -50,15 +40,12 @@ pipeline {
             }
         }
 
-        // stage('Deploy to Cloud Foundry') {
-        //     withCredentials([usernamePassword(credentialsId: 'PCF_USER', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        //         sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u USERNAME -p PASSWORD -o my-dev-org'
-        //         sh 'cf push -p ./dist'
-        //     }
-        // }
-        withMyCredentials {
-           sh "echo $USERNAME_VAR"
-           sh "echo $PASSWORD_VAR"
+        stage('Deploy to Cloud Foundry') {
+            steps {
+                sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u nabise@wmail.club -p Pa55word$ -o my-dev1-org'
+                sh 'cf push -p ./dist'
+            }
         }
+
     }
 }
