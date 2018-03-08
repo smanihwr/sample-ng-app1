@@ -1,3 +1,13 @@
+def withMyCredentials(body) {
+  withCredentials([
+    [ $class: 'StringBinding',
+      credentialsId: 'PCF-DEV',
+      passwordVariable: 'PASSWORD_VAR',
+      usernameVariable: 'USERNAME_VAR']
+  ],
+ body)
+}
+
 pipeline {
 
     agent {
@@ -49,11 +59,7 @@ pipeline {
 
         stage ("Global Credentials Overwritten at the user scope") {
             // credentials declared globally and overwritten by a user scoped credentials
-            withCredentials([
-                usernamePassword(
-                    credentialsId: 'PCF_USER',
-                    passwordVariable: 'PASSWORD_VAR',
-                    usernameVariable: 'USERNAME_VAR')]) {
+            withMyCredentials {
                sh "echo $USERNAME_VAR"
                sh "echo $PASSWORD_VAR"
             }
