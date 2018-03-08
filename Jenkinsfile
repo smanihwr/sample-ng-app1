@@ -64,7 +64,8 @@ pipeline {
         stage('Deploy to Cloud Foundry') {
             steps {
                 sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u nabise@wmail.club -p Pa55word$ -o my-dev1-org'
-                sh 'cd ./dist'
+                sh 'find . -name manifest.yml'
+                sh 'cd dist'
                 sh 'pwd'
                 sh 'ls -ltr'
                 sh 'cf push'
