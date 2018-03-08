@@ -1,7 +1,7 @@
 pipeline {
 
     agent {
-        docker { image 'ubuntu' }
+        docker { image 'ubuntu' }.withRun('-u root')
     }
 
     environment {
