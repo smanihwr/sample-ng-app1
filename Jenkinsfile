@@ -26,7 +26,7 @@ pipeline {
                 sh 'apt-get install -y nodejs'
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'npm install -y'
+                sh 'npm install --no-bin-links -y'
 
             }
         }
