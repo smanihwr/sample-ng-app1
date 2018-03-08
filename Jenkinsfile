@@ -22,7 +22,7 @@ pipeline {
                 sh 'apt-get install apt-transport-https -y'
                 sh 'apt-get install curl'
 
-                sh 'curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -'
+                sh 'curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -'
                 sh 'apt-get install -y nodejs'
                 // sh 'ln -s /usr/bin/nodejs /usr/bin/node'
                 sh 'node --version'
