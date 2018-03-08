@@ -18,8 +18,8 @@ pipeline {
                 // sh 'wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -'
                 // sh 'echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list'
                 // ...then, update your local package index, then finally install the cf CLI
-                sh 'apt-get update'
-                sh 'apt-get install cf-cli'
+                sh 'apk update'
+                sh 'apk install cf-cli'
             }
         }
 
