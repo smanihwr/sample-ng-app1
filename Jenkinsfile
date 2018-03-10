@@ -43,7 +43,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh './node_modules/@angular/cli/bin/ng build --prod --aot --output-hashing none'
-l
                 println "****************************** Generated Files *****************************"
                 sh 'ls ./dist -ltr'
                 println "****************************************************************************"
