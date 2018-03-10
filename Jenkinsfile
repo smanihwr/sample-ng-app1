@@ -42,9 +42,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'ls -ltr ./node_modules/@angular/cli/bin/ng'
                 sh 'chmod 777 ./node_modules/@angular/cli/bin/ng'
-                sh 'ls -ltr ./node_modules/@angular/cli/bin/ng'
                 sh './node_modules/@angular/cli/bin/ng build --prod --aot --output-hashing none'
                 println "****************************** Generated Files *****************************"
                 sh 'ls ./dist -ltr'
@@ -55,7 +53,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'ng test --single-run'
             }
         }
 
