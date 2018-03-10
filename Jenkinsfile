@@ -53,7 +53,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'ng test --single-run'
+                sh './node_modules/@angular/cli/bin/ng test --single-run'
             }
         }
 
