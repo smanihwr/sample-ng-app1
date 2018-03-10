@@ -1,5 +1,5 @@
 applications:
-- name: sample-ng-app1
+- name: sample-ng-app2
   memory: 64M
   disk: 128M
   instances: 1

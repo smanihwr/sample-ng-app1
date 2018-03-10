@@ -42,8 +42,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh './node_modules/@angular/cli/bin/ng build --base-href /myUrl/ --prod --aot --output-hashing none'
-
+                sh './node_modules/@angular/cli/bin/ng build --prod --aot --output-hashing none'
+l
                 println "****************************** Generated Files *****************************"
                 sh 'ls ./dist -ltr'
                 println "****************************************************************************"
@@ -67,9 +67,8 @@ pipeline {
         stage('Deploy to Cloud Foundry') {
             steps {
                 sh 'cf login -a https://api.run.pivotal.io --skip-ssl-validation -u nabise@wmail.club -p Pa55word$ -o my-dev1-org'
-                sh 'cf push -f ./dist/manifest.yml'
+                sh 'cf push -f ./dist/manifest.yml  -p ./dist/'
             }
         }
-
     }
 }
