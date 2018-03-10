@@ -22,6 +22,7 @@ pipeline {
                 sh 'apt-get install apt-transport-https -y'
                 sh 'apt-get install curl'
                 sh 'apt-get install bzip2'
+                sh 'apt-get install libfontconfig'
 
                 sh 'curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -'
                 sh 'apt-get install -y nodejs'
